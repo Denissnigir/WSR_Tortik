@@ -12,7 +12,7 @@
         <ListBox Background="#FFE1D77F" Name="EquipList">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
@@ -23,11 +23,21 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
+                            
 
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}" FontSize="24"/>
-                                <TextBlock Text="{Binding EquipmentType.Name}" FontSize="24" Margin="10"/>
+                                <TextBlock Text="{Binding Name}" FontSize="18" Margin="5"/>
+                                <TextBlock Text="{Binding EquipmentType.Name}" FontSize="9" Margin="0, 15, 0, 0"/>
                             </StackPanel>
+
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Text="{Binding OveruseRate.Name}" FontSize="12" Margin="5, 0, 0, 0"/>
+                                <TextBlock Text="{Binding GetAmount}" FontSize="12" Margin="5, 0, 0, 0"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Column="1" >
+                            <Button Grid.Column="1" Style="{StaticResource MainButton}" Click="EditEquipment" HorizontalAlignment="Center" Margin="50, 0, 0, 0" Height="35" Width="300" Content="Изменить" FontSize="18"/>
                         </Grid>
                     </Grid>
                 </DataTemplate>

@@ -22,6 +22,7 @@ namespace WSR_Tort.Model
         public Nullable<int> SupplierId { get; set; }
         public Nullable<System.DateTime> DateOfBuying { get; set; }
         public string Amount { get; set; }
+        public string Name { get; set; }
     
         public virtual EquipmentType EquipmentType { get; set; }
         public virtual OveruseRate OveruseRate { get; set; }

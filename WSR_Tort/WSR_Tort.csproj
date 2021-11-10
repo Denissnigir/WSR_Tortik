@@ -81,6 +81,7 @@
     <Compile Include="Model\EquipmentType.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\EquipPartClass.cs" />
     <Compile Include="Model\Gost.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
@@ -117,9 +118,6 @@
     <Compile Include="Model\Supplier.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>TortModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\TortModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +141,9 @@
     </Compile>
     <Compile Include="Pages\DirectorMenu.xaml.cs">
       <DependentUpon>DirectorMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditAddEquipment.xaml.cs">
+      <DependentUpon>EditAddEquipment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EquipmentListing.xaml.cs">
       <DependentUpon>EquipmentListing.xaml</DependentUpon>
@@ -194,6 +195,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Pages\DirectorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditAddEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

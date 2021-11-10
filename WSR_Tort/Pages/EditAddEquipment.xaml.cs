@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WSR_Tort.Model;
 
 namespace WSR_Tort.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EquipmentListing.xaml
+    /// Логика взаимодействия для EditAddEquipment.xaml
     /// </summary>
-    public partial class EquipmentListing : Page
+    public partial class EditAddEquipment : Page
     {
-        public EquipmentListing()
+        public EditAddEquipment()
         {
             InitializeComponent();
-            EquipList.ItemsSource = Context._con.Equipment.ToList();
-        }
-
-        private void EditEquipment(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

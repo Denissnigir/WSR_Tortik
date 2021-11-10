@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6c9451c2461a462a95225e8b62245476" Name="Diagram1">
+      <Diagram DiagramId="e401a7d8d4334a41bda5bb8b2e35f32d" Name="Diagram1">
         <EntityTypeShape EntityType="WSR_TortikModel.CakeDecoration" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.CakeDecorationType" Width="1.5" PointX="1.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="WSR_TortikModel.Equipment" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Equipment" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.EquipmentType" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.Gost" Width="1.5" PointX="1.5" PointY="25.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.Ingridient" Width="1.5" PointX="3.75" PointY="28.5" IsExpanded="true" />
@@ -21,7 +21,6 @@
         <EntityTypeShape EntityType="WSR_TortikModel.SpecificationOperation" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.SpecificationSemiProduct" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.Supplier" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WSR_TortikModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.Unit" Width="1.5" PointX="1.5" PointY="33.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WSR_TortikModel.User" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
         <AssociationConnector Association="WSR_TortikModel.FK_CakeDecoration_CakeDecorationType" ManuallyRouted="false" />
