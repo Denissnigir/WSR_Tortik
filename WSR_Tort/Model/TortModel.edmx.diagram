@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05d3926c8f4e477d8c74df4aa519f114" Name="Diagram1">
+        <EntityTypeShape EntityType="WSR_TortikModel.CakeDecoration" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.CakeDecorationType" Width="1.5" PointX="1.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Equipment" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.EquipmentType" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Gost" Width="1.5" PointX="1.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Ingridient" Width="1.5" PointX="3.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.IngridientType" Width="1.5" PointX="1.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Order" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Product" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Role" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.SpecificationCakeDecoration" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.SpecificationIngridient" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.SpecificationOperation" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.SpecificationSemiProduct" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Supplier" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.Unit" Width="1.5" PointX="1.5" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WSR_TortikModel.User" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="WSR_TortikModel.FK_CakeDecoration_CakeDecorationType" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_CakeDecoration_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_CakeDecoration_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationCakeDecoration_CakeDecoration" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Equipment_EquipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationOperation_EquipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Ingridient_Gost" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Ingridient_IngridientType" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Ingridient_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Ingridient_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationIngridient_Ingridient" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Order_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Order_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_Order_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationCakeDecoration_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationIngridient_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationOperation_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationSemiProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_SpecificationSemiProduct_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="WSR_TortikModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

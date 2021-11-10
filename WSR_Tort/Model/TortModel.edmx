@@ -1,0 +1,1305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище WSR_TortikModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CakeDecoration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="SupplierId" Type="int" />
+        </EntityType>
+        <EntityType Name="CakeDecorationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Characteristic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ingridient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="GostId" Type="int" />
+          <Property Name="Packing" Type="nvarchar" MaxLength="30" />
+          <Property Name="Characteristic" Type="nvarchar(max)" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="IngridientType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="BuyerId" Type="int" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="DateOfEnd" Type="date" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecificationCakeDecoration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CakeDecorationId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecificationIngridient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IngridientId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecificationOperation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SerialNumber" Type="int" Nullable="false" />
+          <Property Name="EquipmentTypeId" Type="int" Nullable="false" />
+          <Property Name="TimeOnOperation" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SpecificationSemiProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SemiProductId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="DeliveryPeriod" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CakeDecoration_CakeDecorationType">
+          <End Role="CakeDecorationType" Type="Self.CakeDecorationType" Multiplicity="1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeDecorationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CakeDecoration_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CakeDecoration_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Gost">
+          <End Role="Gost" Type="Self.Gost" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="GostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_IngridientType">
+          <End Role="IngridientType" Type="Self.IngridientType" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngridientType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Role1">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationCakeDecoration_CakeDecoration">
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="1" />
+          <End Role="SpecificationCakeDecoration" Type="Self.SpecificationCakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeDecoration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationCakeDecoration">
+              <PropertyRef Name="CakeDecorationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationCakeDecoration_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationCakeDecoration" Type="Self.SpecificationCakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationCakeDecoration">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationIngridient_Ingridient">
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="1" />
+          <End Role="SpecificationIngridient" Type="Self.SpecificationIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationIngridient">
+              <PropertyRef Name="IngridientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationIngridient_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationIngridient" Type="Self.SpecificationIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationIngridient">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationOperation_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+          <End Role="SpecificationOperation" Type="Self.SpecificationOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationOperation">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationOperation_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationOperation" Type="Self.SpecificationOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationOperation">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationSemiProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationSemiProduct" Type="Self.SpecificationSemiProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationSemiProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationSemiProduct_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationSemiProduct" Type="Self.SpecificationSemiProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationSemiProduct">
+              <PropertyRef Name="SemiProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище WSR_TortikModelContainer">
+          <EntitySet Name="CakeDecoration" EntityType="Self.CakeDecoration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CakeDecorationType" EntityType="Self.CakeDecorationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gost" EntityType="Self.Gost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingridient" EntityType="Self.Ingridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngridientType" EntityType="Self.IngridientType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecificationCakeDecoration" EntityType="Self.SpecificationCakeDecoration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecificationIngridient" EntityType="Self.SpecificationIngridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecificationOperation" EntityType="Self.SpecificationOperation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecificationSemiProduct" EntityType="Self.SpecificationSemiProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CakeDecoration_CakeDecorationType" Association="Self.FK_CakeDecoration_CakeDecorationType">
+            <End Role="CakeDecorationType" EntitySet="CakeDecorationType" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CakeDecoration_Supplier" Association="Self.FK_CakeDecoration_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CakeDecoration_Unit" Association="Self.FK_CakeDecoration_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Gost" Association="Self.FK_Ingridient_Gost">
+            <End Role="Gost" EntitySet="Gost" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_IngridientType" Association="Self.FK_Ingridient_IngridientType">
+            <End Role="IngridientType" EntitySet="IngridientType" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Supplier" Association="Self.FK_Ingridient_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Unit" Association="Self.FK_Ingridient_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Role" Association="Self.FK_Order_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Role1" Association="Self.FK_Order_Role1">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationCakeDecoration_CakeDecoration" Association="Self.FK_SpecificationCakeDecoration_CakeDecoration">
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+            <End Role="SpecificationCakeDecoration" EntitySet="SpecificationCakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationCakeDecoration_Product" Association="Self.FK_SpecificationCakeDecoration_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationCakeDecoration" EntitySet="SpecificationCakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationIngridient_Ingridient" Association="Self.FK_SpecificationIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="SpecificationIngridient" EntitySet="SpecificationIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationIngridient_Product" Association="Self.FK_SpecificationIngridient_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationIngridient" EntitySet="SpecificationIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationOperation_EquipmentType" Association="Self.FK_SpecificationOperation_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="SpecificationOperation" EntitySet="SpecificationOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationOperation_Product" Association="Self.FK_SpecificationOperation_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationOperation" EntitySet="SpecificationOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationSemiProduct_Product" Association="Self.FK_SpecificationSemiProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationSemiProduct" EntitySet="SpecificationSemiProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationSemiProduct_Product1" Association="Self.FK_SpecificationSemiProduct_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationSemiProduct" EntitySet="SpecificationSemiProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WSR_TortikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CakeDecoration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Label" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Weight" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupplierId" Type="Int32" />
+          <NavigationProperty Name="CakeDecorationType" Relationship="Self.FK_CakeDecoration_CakeDecorationType" FromRole="CakeDecoration" ToRole="CakeDecorationType" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_CakeDecoration_Supplier" FromRole="CakeDecoration" ToRole="Supplier" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_CakeDecoration_Unit" FromRole="CakeDecoration" ToRole="Unit" />
+          <NavigationProperty Name="SpecificationCakeDecoration" Relationship="Self.FK_SpecificationCakeDecoration_CakeDecoration" FromRole="CakeDecoration" ToRole="SpecificationCakeDecoration" />
+        </EntityType>
+        <EntityType Name="CakeDecorationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CakeDecoration" Relationship="Self.FK_CakeDecoration_CakeDecorationType" FromRole="CakeDecorationType" ToRole="CakeDecoration" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentType" Relationship="Self.FK_Equipment_EquipmentType" FromRole="Equipment" ToRole="EquipmentType" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_EquipmentType" FromRole="EquipmentType" ToRole="Equipment" />
+          <NavigationProperty Name="SpecificationOperation" Relationship="Self.FK_SpecificationOperation_EquipmentType" FromRole="EquipmentType" ToRole="SpecificationOperation" />
+        </EntityType>
+        <EntityType Name="Gost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingridient" Relationship="Self.FK_Ingridient_Gost" FromRole="Gost" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="Ingridient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Label" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="GostId" Type="Int32" />
+          <Property Name="Packing" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Gost" Relationship="Self.FK_Ingridient_Gost" FromRole="Ingridient" ToRole="Gost" />
+          <NavigationProperty Name="IngridientType" Relationship="Self.FK_Ingridient_IngridientType" FromRole="Ingridient" ToRole="IngridientType" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Ingridient_Supplier" FromRole="Ingridient" ToRole="Supplier" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_Ingridient_Unit" FromRole="Ingridient" ToRole="Unit" />
+          <NavigationProperty Name="SpecificationIngridient" Relationship="Self.FK_SpecificationIngridient_Ingridient" FromRole="Ingridient" ToRole="SpecificationIngridient" />
+        </EntityType>
+        <EntityType Name="IngridientType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingridient" Relationship="Self.FK_Ingridient_IngridientType" FromRole="IngridientType" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="BuyerId" Type="Int32" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="DateOfEnd" Type="DateTime" Precision="0" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="Order" ToRole="Product" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Order_Role" FromRole="Order" ToRole="Role" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_Order_Role1" FromRole="Order" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="Order" />
+          <NavigationProperty Name="SpecificationCakeDecoration" Relationship="Self.FK_SpecificationCakeDecoration_Product" FromRole="Product" ToRole="SpecificationCakeDecoration" />
+          <NavigationProperty Name="SpecificationIngridient" Relationship="Self.FK_SpecificationIngridient_Product" FromRole="Product" ToRole="SpecificationIngridient" />
+          <NavigationProperty Name="SpecificationOperation" Relationship="Self.FK_SpecificationOperation_Product" FromRole="Product" ToRole="SpecificationOperation" />
+          <NavigationProperty Name="SpecificationSemiProduct" Relationship="Self.FK_SpecificationSemiProduct_Product" FromRole="Product" ToRole="SpecificationSemiProduct" />
+          <NavigationProperty Name="SpecificationSemiProduct1" Relationship="Self.FK_SpecificationSemiProduct_Product1" FromRole="Product" ToRole="SpecificationSemiProduct" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Role" FromRole="Role" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Role1" FromRole="Role" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SpecificationCakeDecoration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CakeDecorationId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CakeDecoration" Relationship="Self.FK_SpecificationCakeDecoration_CakeDecoration" FromRole="SpecificationCakeDecoration" ToRole="CakeDecoration" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SpecificationCakeDecoration_Product" FromRole="SpecificationCakeDecoration" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="SpecificationIngridient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="IngridientId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingridient" Relationship="Self.FK_SpecificationIngridient_Ingridient" FromRole="SpecificationIngridient" ToRole="Ingridient" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SpecificationIngridient_Product" FromRole="SpecificationIngridient" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="SpecificationOperation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SerialNumber" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TimeOnOperation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentType" Relationship="Self.FK_SpecificationOperation_EquipmentType" FromRole="SpecificationOperation" ToRole="EquipmentType" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SpecificationOperation_Product" FromRole="SpecificationOperation" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="SpecificationSemiProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SemiProductId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SpecificationSemiProduct_Product" FromRole="SpecificationSemiProduct" ToRole="Product" />
+          <NavigationProperty Name="Product1" Relationship="Self.FK_SpecificationSemiProduct_Product1" FromRole="SpecificationSemiProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryPeriod" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CakeDecoration" Relationship="Self.FK_CakeDecoration_Supplier" FromRole="Supplier" ToRole="CakeDecoration" />
+          <NavigationProperty Name="Ingridient" Relationship="Self.FK_Ingridient_Supplier" FromRole="Supplier" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CakeDecoration" Relationship="Self.FK_CakeDecoration_Unit" FromRole="Unit" ToRole="CakeDecoration" />
+          <NavigationProperty Name="Ingridient" Relationship="Self.FK_Ingridient_Unit" FromRole="Unit" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_CakeDecoration_CakeDecorationType">
+          <End Role="CakeDecorationType" Type="Self.CakeDecorationType" Multiplicity="1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeDecorationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CakeDecoration_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CakeDecoration_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CakeDecoration">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationCakeDecoration_CakeDecoration">
+          <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="1" />
+          <End Role="SpecificationCakeDecoration" Type="Self.SpecificationCakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeDecoration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationCakeDecoration">
+              <PropertyRef Name="CakeDecorationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationOperation_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+          <End Role="SpecificationOperation" Type="Self.SpecificationOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationOperation">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Gost">
+          <End Role="Gost" Type="Self.Gost" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="GostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_IngridientType">
+          <End Role="IngridientType" Type="Self.IngridientType" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngridientType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingridient_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationIngridient_Ingridient">
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="1" />
+          <End Role="SpecificationIngridient" Type="Self.SpecificationIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationIngridient">
+              <PropertyRef Name="IngridientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Role1">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationCakeDecoration_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationCakeDecoration" Type="Self.SpecificationCakeDecoration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationCakeDecoration">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationIngridient_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationIngridient" Type="Self.SpecificationIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationIngridient">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationOperation_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationOperation" Type="Self.SpecificationOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationOperation">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationSemiProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationSemiProduct" Type="Self.SpecificationSemiProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationSemiProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecificationSemiProduct_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SpecificationSemiProduct" Type="Self.SpecificationSemiProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecificationSemiProduct">
+              <PropertyRef Name="SemiProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WSR_TortikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CakeDecoration" EntityType="Self.CakeDecoration" />
+          <EntitySet Name="CakeDecorationType" EntityType="Self.CakeDecorationType" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" />
+          <EntitySet Name="Gost" EntityType="Self.Gost" />
+          <EntitySet Name="Ingridient" EntityType="Self.Ingridient" />
+          <EntitySet Name="IngridientType" EntityType="Self.IngridientType" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SpecificationCakeDecoration" EntityType="Self.SpecificationCakeDecoration" />
+          <EntitySet Name="SpecificationIngridient" EntityType="Self.SpecificationIngridient" />
+          <EntitySet Name="SpecificationOperation" EntityType="Self.SpecificationOperation" />
+          <EntitySet Name="SpecificationSemiProduct" EntityType="Self.SpecificationSemiProduct" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_CakeDecoration_CakeDecorationType" Association="Self.FK_CakeDecoration_CakeDecorationType">
+            <End Role="CakeDecorationType" EntitySet="CakeDecorationType" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CakeDecoration_Supplier" Association="Self.FK_CakeDecoration_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CakeDecoration_Unit" Association="Self.FK_CakeDecoration_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationCakeDecoration_CakeDecoration" Association="Self.FK_SpecificationCakeDecoration_CakeDecoration">
+            <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+            <End Role="SpecificationCakeDecoration" EntitySet="SpecificationCakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationOperation_EquipmentType" Association="Self.FK_SpecificationOperation_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="SpecificationOperation" EntitySet="SpecificationOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Gost" Association="Self.FK_Ingridient_Gost">
+            <End Role="Gost" EntitySet="Gost" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_IngridientType" Association="Self.FK_Ingridient_IngridientType">
+            <End Role="IngridientType" EntitySet="IngridientType" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Supplier" Association="Self.FK_Ingridient_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingridient_Unit" Association="Self.FK_Ingridient_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Ingridient" EntitySet="Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationIngridient_Ingridient" Association="Self.FK_SpecificationIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="SpecificationIngridient" EntitySet="SpecificationIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Role" Association="Self.FK_Order_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Role1" Association="Self.FK_Order_Role1">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationCakeDecoration_Product" Association="Self.FK_SpecificationCakeDecoration_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationCakeDecoration" EntitySet="SpecificationCakeDecoration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationIngridient_Product" Association="Self.FK_SpecificationIngridient_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationIngridient" EntitySet="SpecificationIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationOperation_Product" Association="Self.FK_SpecificationOperation_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationOperation" EntitySet="SpecificationOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationSemiProduct_Product" Association="Self.FK_SpecificationSemiProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationSemiProduct" EntitySet="SpecificationSemiProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationSemiProduct_Product1" Association="Self.FK_SpecificationSemiProduct_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SpecificationSemiProduct" EntitySet="SpecificationSemiProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WSR_TortikModelContainer" CdmEntityContainer="WSR_TortikEntities">
+          <EntitySetMapping Name="CakeDecoration">
+            <EntityTypeMapping TypeName="WSR_TortikModel.CakeDecoration">
+              <MappingFragment StoreEntitySet="CakeDecoration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CakeDecorationType">
+            <EntityTypeMapping TypeName="WSR_TortikModel.CakeDecorationType">
+              <MappingFragment StoreEntitySet="CakeDecorationType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentType">
+            <EntityTypeMapping TypeName="WSR_TortikModel.EquipmentType">
+              <MappingFragment StoreEntitySet="EquipmentType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gost">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Gost">
+              <MappingFragment StoreEntitySet="Gost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingridient">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Ingridient">
+              <MappingFragment StoreEntitySet="Ingridient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="GostId" ColumnName="GostId" />
+                <ScalarProperty Name="Packing" ColumnName="Packing" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngridientType">
+            <EntityTypeMapping TypeName="WSR_TortikModel.IngridientType">
+              <MappingFragment StoreEntitySet="IngridientType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecificationCakeDecoration">
+            <EntityTypeMapping TypeName="WSR_TortikModel.SpecificationCakeDecoration">
+              <MappingFragment StoreEntitySet="SpecificationCakeDecoration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CakeDecorationId" ColumnName="CakeDecorationId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecificationIngridient">
+            <EntityTypeMapping TypeName="WSR_TortikModel.SpecificationIngridient">
+              <MappingFragment StoreEntitySet="SpecificationIngridient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="IngridientId" ColumnName="IngridientId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecificationOperation">
+            <EntityTypeMapping TypeName="WSR_TortikModel.SpecificationOperation">
+              <MappingFragment StoreEntitySet="SpecificationOperation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="EquipmentTypeId" ColumnName="EquipmentTypeId" />
+                <ScalarProperty Name="TimeOnOperation" ColumnName="TimeOnOperation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecificationSemiProduct">
+            <EntityTypeMapping TypeName="WSR_TortikModel.SpecificationSemiProduct">
+              <MappingFragment StoreEntitySet="SpecificationSemiProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SemiProductId" ColumnName="SemiProductId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DeliveryPeriod" ColumnName="DeliveryPeriod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WSR_TortikModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="WSR_TortikModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="WSR_TortikModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
