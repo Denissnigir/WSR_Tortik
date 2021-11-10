@@ -12,18 +12,18 @@ namespace WSR_Tort.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class OveruseRate
     {
-        public int Id { get; set; }
-        public string Label { get; set; }
-        public int TypeId { get; set; }
-        public string Characteristic { get; set; }
-        public Nullable<int> OveruseRateId { get; set; }
-        public Nullable<int> SupplierId { get; set; }
-        public Nullable<System.DateTime> DateOfBuying { get; set; }
-        public string Amount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public OveruseRate()
+        {
+            this.Equipment = new HashSet<Equipment>();
+        }
     
-        public virtual EquipmentType EquipmentType { get; set; }
-        public virtual OveruseRate OveruseRate { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipment { get; set; }
     }
 }

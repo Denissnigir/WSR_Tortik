@@ -35,6 +35,10 @@
           <Property Name="Label" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="Characteristic" Type="nvarchar(max)" />
+          <Property Name="OveruseRateId" Type="int" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="DateOfBuying" Type="date" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="EquipmentType">
           <Key>
@@ -87,6 +91,13 @@
           <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
           <Property Name="DateOfEnd" Type="date" />
           <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="OveruseRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -225,6 +236,18 @@
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_OveruseRate">
+          <End Role="OveruseRate" Type="Self.OveruseRate" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OveruseRate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="OveruseRateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -429,6 +452,7 @@
           <EntitySet Name="Ingridient" EntityType="Self.Ingridient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IngridientType" EntityType="Self.IngridientType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OveruseRate" EntityType="Self.OveruseRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationCakeDecoration" EntityType="Self.SpecificationCakeDecoration" Schema="dbo" store:Type="Tables" />
@@ -453,6 +477,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
             <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_OveruseRate" Association="Self.FK_Equipment_OveruseRate">
+            <End Role="OveruseRate" EntitySet="OveruseRate" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
           <AssociationSet Name="FK_Ingridient_Gost" Association="Self.FK_Ingridient_Gost">
@@ -560,7 +588,12 @@
           <Property Name="Label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OveruseRateId" Type="Int32" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="DateOfBuying" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EquipmentType" Relationship="Self.FK_Equipment_EquipmentType" FromRole="Equipment" ToRole="EquipmentType" />
+          <NavigationProperty Name="OveruseRate" Relationship="Self.FK_Equipment_OveruseRate" FromRole="Equipment" ToRole="OveruseRate" />
         </EntityType>
         <EntityType Name="EquipmentType">
           <Key>
@@ -625,6 +658,14 @@
           <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="Order" ToRole="Product" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Order_Role" FromRole="Order" ToRole="Role" />
           <NavigationProperty Name="Role1" Relationship="Self.FK_Order_Role1" FromRole="Order" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="OveruseRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_OveruseRate" FromRole="OveruseRate" ToRole="Equipment" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -797,6 +838,18 @@
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_OveruseRate">
+          <End Role="OveruseRate" Type="Self.OveruseRate" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OveruseRate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="OveruseRateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -989,6 +1042,7 @@
           <EntitySet Name="Ingridient" EntityType="Self.Ingridient" />
           <EntitySet Name="IngridientType" EntityType="Self.IngridientType" />
           <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OveruseRate" EntityType="Self.OveruseRate" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="SpecificationCakeDecoration" EntityType="Self.SpecificationCakeDecoration" />
@@ -1017,6 +1071,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
             <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_OveruseRate" Association="Self.FK_Equipment_OveruseRate">
+            <End Role="OveruseRate" EntitySet="OveruseRate" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
           <AssociationSet Name="FK_SpecificationOperation_EquipmentType" Association="Self.FK_SpecificationOperation_EquipmentType">
@@ -1117,6 +1175,10 @@
                 <ScalarProperty Name="Label" ColumnName="Label" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="OveruseRateId" ColumnName="OveruseRateId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="DateOfBuying" ColumnName="DateOfBuying" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1174,6 +1236,14 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OveruseRate">
+            <EntityTypeMapping TypeName="WSR_TortikModel.OveruseRate">
+              <MappingFragment StoreEntitySet="OveruseRate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

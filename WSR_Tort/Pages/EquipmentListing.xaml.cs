@@ -12,22 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSR_Tort.Model;
 
 namespace WSR_Tort.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DirectorMenu.xaml
+    /// Логика взаимодействия для EquipmentListing.xaml
     /// </summary>
-    public partial class DirectorMenu : Page
+    public partial class EquipmentListing : Page
     {
-        public DirectorMenu()
+        public EquipmentListing()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new EquipmentListing());
+            EquipList.ItemsSource = Context._con.Equipment.ToList();
         }
     }
 }

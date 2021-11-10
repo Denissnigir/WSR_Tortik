@@ -33,6 +33,7 @@ namespace WSR_Tort.Model
         public virtual DbSet<Ingridient> Ingridient { get; set; }
         public virtual DbSet<IngridientType> IngridientType { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OveruseRate> OveruseRate { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<SpecificationCakeDecoration> SpecificationCakeDecoration { get; set; }

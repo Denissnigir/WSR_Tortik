@@ -93,6 +93,9 @@
     <Compile Include="Model\Order.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\OveruseRate.cs">
+      <DependentUpon>TortModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Product.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
@@ -140,6 +143,9 @@
     </Compile>
     <Compile Include="Pages\DirectorMenu.xaml.cs">
       <DependentUpon>DirectorMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EquipmentListing.xaml.cs">
+      <DependentUpon>EquipmentListing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Windows\Auth.xaml.cs">
@@ -191,6 +197,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EquipmentListing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,19 +220,19 @@
     <Resource Include="Photo\Logo_Monochrome.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\TortModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TortModel.Context.cs</LastGenOutput>
       <DependentUpon>TortModel.edmx</DependentUpon>
+      <LastGenOutput>TortModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\TortModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TortModel.edmx</DependentUpon>
       <LastGenOutput>TortModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
