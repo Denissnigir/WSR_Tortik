@@ -18,6 +18,7 @@ namespace WSR_Tort.Model
         public Supplier()
         {
             this.CakeDecoration = new HashSet<CakeDecoration>();
+            this.Equipment = new HashSet<Equipment>();
             this.Ingridient = new HashSet<Ingridient>();
         }
     
@@ -28,6 +29,8 @@ namespace WSR_Tort.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CakeDecoration> CakeDecoration { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ingridient> Ingridient { get; set; }
     }

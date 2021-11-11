@@ -88,6 +88,7 @@
     <Compile Include="Model\Ingridient.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\IngridientPartClass.cs" />
     <Compile Include="Model\IngridientType.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +117,9 @@
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Supplier.cs">
+      <DependentUpon>TortModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>TortModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TortModel.Context.cs">
@@ -147,6 +151,9 @@
     </Compile>
     <Compile Include="Pages\EquipmentListing.xaml.cs">
       <DependentUpon>EquipmentListing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IngridientListing.xaml.cs">
+      <DependentUpon>IngridientListing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Windows\Auth.xaml.cs">
@@ -203,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EquipmentListing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\IngridientListing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

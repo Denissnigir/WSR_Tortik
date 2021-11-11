@@ -12,20 +12,12 @@ namespace WSR_Tort.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class sysdiagrams
     {
-        public int Id { get; set; }
-        public string Label { get; set; }
-        public int TypeId { get; set; }
-        public string Characteristic { get; set; }
-        public Nullable<int> OveruseRateId { get; set; }
-        public Nullable<int> SupplierId { get; set; }
-        public Nullable<System.DateTime> DateOfBuying { get; set; }
-        public string Amount { get; set; }
-        public string Name { get; set; }
-    
-        public virtual EquipmentType EquipmentType { get; set; }
-        public virtual OveruseRate OveruseRate { get; set; }
-        public virtual Supplier Supplier { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

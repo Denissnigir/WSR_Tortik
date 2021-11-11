@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSR_Tort.Model;
+using WSR_Tort.Util;
 
 namespace WSR_Tort.Pages
 {
@@ -20,9 +22,40 @@ namespace WSR_Tort.Pages
     /// </summary>
     public partial class EditAddEquipment : Page
     {
-        public EditAddEquipment()
+
+        Equipment equipData;
+
+        public EditAddEquipment(Equipment equipment)
         {
             InitializeComponent();
+            equipData = equipment;
+            MainGrid.DataContext = equipData;
+            OveruserRateCB.ItemsSource = Context._con.OveruseRate.ToList();
+            SupplierCB.ItemsSource = Context._con.Supplier.ToList();
+            EquipTypeCB.ItemsSource = Context._con.EquipmentType.ToList();
+        }
+
+        private void SaveEquipment(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(NameTB.Text) && !string.IsNullOrWhiteSpace(AmountTB.Text) &&
+                !string.IsNullOrWhiteSpace(DescTB.Text) && DateTB.SelectedDate != null && EquipTypeCB.SelectedItem != null &&
+                OveruserRateCB.SelectedItem != null && SupplierCB.SelectedItem != null && !string.IsNullOrWhiteSpace(AmountTB.Text))
+            {
+                Context._con.SaveChanges();
+                NavigationService.Navigate(new EquipmentListing());
+            }
+            else
+            {
+                ShowMessage.WarningMessageBox("Сначала заполните все поля!");
+            }
+        }
+
+        private void AmountTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if(!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

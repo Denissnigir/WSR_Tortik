@@ -19,6 +19,7 @@
           <Property Name="Weight" Type="nvarchar" MaxLength="20" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="SupplierId" Type="int" />
+          <Property Name="ExpireDate" Type="date" />
         </EntityType>
         <EntityType Name="CakeDecorationType">
           <Key>
@@ -71,6 +72,7 @@
           <Property Name="Characteristic" Type="nvarchar(max)" />
           <Property Name="SupplierId" Type="int" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="ExpireDate" Type="date" />
         </EntityType>
         <EntityType Name="IngridientType">
           <Key>
@@ -162,6 +164,16 @@
           <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="DeliveryPeriod" Type="nvarchar" MaxLength="40" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="Id" />
@@ -239,6 +251,18 @@
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="OveruseRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="SupplierId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -451,6 +475,7 @@
           <EntitySet Name="SpecificationOperation" EntityType="Self.SpecificationOperation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationSemiProduct" EntityType="Self.SpecificationSemiProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CakeDecoration_CakeDecorationType" Association="Self.FK_CakeDecoration_CakeDecorationType">
@@ -471,6 +496,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_OveruseRate" Association="Self.FK_Equipment_OveruseRate">
             <End Role="OveruseRate" EntitySet="OveruseRate" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_Supplier" Association="Self.FK_Equipment_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
           <AssociationSet Name="FK_Ingridient_Gost" Association="Self.FK_Ingridient_Gost">
@@ -557,6 +586,7 @@
           <Property Name="Weight" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="SupplierId" Type="Int32" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="CakeDecorationType" Relationship="Self.FK_CakeDecoration_CakeDecorationType" FromRole="CakeDecoration" ToRole="CakeDecorationType" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_CakeDecoration_Supplier" FromRole="CakeDecoration" ToRole="Supplier" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_CakeDecoration_Unit" FromRole="CakeDecoration" ToRole="Unit" />
@@ -585,6 +615,7 @@
           <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EquipmentType" Relationship="Self.FK_Equipment_EquipmentType" FromRole="Equipment" ToRole="EquipmentType" />
           <NavigationProperty Name="OveruseRate" Relationship="Self.FK_Equipment_OveruseRate" FromRole="Equipment" ToRole="OveruseRate" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Equipment_Supplier" FromRole="Equipment" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="EquipmentType">
           <Key>
@@ -619,6 +650,7 @@
           <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SupplierId" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Gost" Relationship="Self.FK_Ingridient_Gost" FromRole="Ingridient" ToRole="Gost" />
           <NavigationProperty Name="IngridientType" Relationship="Self.FK_Ingridient_IngridientType" FromRole="Ingridient" ToRole="IngridientType" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Ingridient_Supplier" FromRole="Ingridient" ToRole="Supplier" />
@@ -737,7 +769,18 @@
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryPeriod" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CakeDecoration" Relationship="Self.FK_CakeDecoration_Supplier" FromRole="Supplier" ToRole="CakeDecoration" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_Supplier" FromRole="Supplier" ToRole="Equipment" />
           <NavigationProperty Name="Ingridient" Relationship="Self.FK_Ingridient_Supplier" FromRole="Supplier" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -831,6 +874,18 @@
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="OveruseRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="SupplierId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1031,6 +1086,7 @@
           <EntitySet Name="SpecificationOperation" EntityType="Self.SpecificationOperation" />
           <EntitySet Name="SpecificationSemiProduct" EntityType="Self.SpecificationSemiProduct" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Unit" EntityType="Self.Unit" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_CakeDecoration_CakeDecorationType" Association="Self.FK_CakeDecoration_CakeDecorationType">
@@ -1055,6 +1111,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_OveruseRate" Association="Self.FK_Equipment_OveruseRate">
             <End Role="OveruseRate" EntitySet="OveruseRate" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_Supplier" Association="Self.FK_Equipment_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
           <AssociationSet Name="FK_SpecificationOperation_EquipmentType" Association="Self.FK_SpecificationOperation_EquipmentType">
@@ -1137,6 +1197,7 @@
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1194,6 +1255,7 @@
                 <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1294,6 +1356,17 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DeliveryPeriod" ColumnName="DeliveryPeriod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WSR_TortikModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -41,6 +41,7 @@ namespace WSR_Tort.Model
         public virtual DbSet<SpecificationOperation> SpecificationOperation { get; set; }
         public virtual DbSet<SpecificationSemiProduct> SpecificationSemiProduct { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

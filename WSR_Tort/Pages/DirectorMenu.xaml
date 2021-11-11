@@ -14,8 +14,8 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Button Width="350" Height="80" Style="{StaticResource MainButton}" Content="Учёт инструментов" FontSize="18" Click="Button_Click"/>
-        <Button Width="350" Height="80" Style="{StaticResource MainButton}" FontSize="18" Grid.Row="1">
+        <Button Width="350" Height="80" Style="{StaticResource MainButton}" Content="Учёт инструментов" FontSize="18" Click="ToEquipmentList"/>
+        <Button Width="350" Height="80" Style="{StaticResource MainButton}" FontSize="18" Grid.Row="1" Click="ToIngridientList">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Учёт ингредиентов и украшений для тортов"/>
         </Button>
     </Grid>

@@ -12,27 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSR_Tort.Model;
 
 namespace WSR_Tort.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DirectorMenu.xaml
+    /// Логика взаимодействия для IngridientListing.xaml
     /// </summary>
-    public partial class DirectorMenu : Page
+    public partial class IngridientListing : Page
     {
-        public DirectorMenu()
+        public IngridientListing()
         {
             InitializeComponent();
-        }
-
-        private void ToEquipmentList(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new EquipmentListing());
-        }
-
-        private void ToIngridientList(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new IngridientListing());
+            IngridientList.ItemsSource = Context._con.Ingridient.ToList();
         }
     }
 }

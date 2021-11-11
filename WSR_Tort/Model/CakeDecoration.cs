@@ -30,6 +30,7 @@ namespace WSR_Tort.Model
         public string Weight { get; set; }
         public byte[] Image { get; set; }
         public Nullable<int> SupplierId { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
     
         public virtual CakeDecorationType CakeDecorationType { get; set; }
         public virtual Supplier Supplier { get; set; }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WSR_Tort.Model;
+using WSR_Tort.Util;
 
 namespace WSR_Tort.Pages
 {
@@ -29,7 +30,15 @@ namespace WSR_Tort.Pages
 
         private void EditEquipment(object sender, RoutedEventArgs e)
         {
-
+            if(EquipList.SelectedItem != null)
+            {
+                var equip = (Equipment)EquipList.SelectedItem;
+                NavigationService.Navigate(new EditAddEquipment(equip));
+            }
+            else
+            {
+                ShowMessage.WarningMessageBox("Сначала кликните по инструменту!");
+            }
         }
     }
 }

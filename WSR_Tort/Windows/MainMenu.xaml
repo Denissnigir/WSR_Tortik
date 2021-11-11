@@ -24,7 +24,7 @@
 
             <TextBlock Text="Пекарня" Grid.Column="1" Style="{StaticResource Header}"/>
 
-            <Button Style="{StaticResource MainButton}" Click="Exit"  Grid.Column="2" Height="35" Width="100" Content="Закрыть"  FontSize="12"/>
+            <Button Style="{StaticResource MainButton}" Click="Exit"  Grid.Column="2" Height="35" Width="100" Content="Выйти"  FontSize="12"/>
         </Grid>
 
         <Frame Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden">

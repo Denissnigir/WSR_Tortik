@@ -32,6 +32,7 @@ namespace WSR_Tort.Model
         public string Characteristic { get; set; }
         public Nullable<int> SupplierId { get; set; }
         public byte[] Image { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
     
         public virtual Gost Gost { get; set; }
         public virtual IngridientType IngridientType { get; set; }

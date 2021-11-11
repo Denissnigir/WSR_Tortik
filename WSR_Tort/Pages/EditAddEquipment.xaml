@@ -8,9 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditAddEquipment">
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.9*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -24,11 +24,77 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.8*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+                <TextBlock Text="Наименование:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <TextBox Name="NameTB" Text="{Binding Path=Name}" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
             </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Описание:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <TextBox x:Name="DescTB" Text="{Binding Path=Characteristic}" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Тип инструмента:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Path=EquipmentType}" Name="EquipTypeCB" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Степень износа:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Path=OveruseRate}" Name="OveruserRateCB" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Поставщик:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Path=Supplier}" Name="SupplierCB" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Дата приобретения:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <DatePicker Name="DateTB" Text="{Binding Path=DateOfBuying, StringFormat=d}" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Количество:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Margin="5"/>
+                <TextBox PreviewTextInput="AmountTB_PreviewTextInput"  Name="AmountTB" Text="{Binding Path=Amount}" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+
+            <Button Grid.Row="3" Style="{StaticResource MainButton}" Height="40" Width="200" Content="Сохранить!" FontSize="18" Click="SaveEquipment"/>
         </Grid>
     </Grid>
 </Page>
