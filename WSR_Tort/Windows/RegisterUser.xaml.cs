@@ -32,7 +32,7 @@ namespace WSR_Tort.Windows
 
         private void RegisterNewUser(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("(?=.*[A-Z])(?=.*[a-z]).*$");
+            Regex regex = new Regex("(?=.*[A-Z])(?=.*[a-z]).*$"); // Хотя бы одна заглавная и строчная буквы!!
             try
             {
                 if(PasswordTB.Text.Length > 5)

@@ -50,7 +50,7 @@ namespace WSR_Tort.Pages
             }
         }
 
-        private void AmountTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void AmountTB_PreviewTextInput(object sender, TextCompositionEventArgs e) // Ввод только цифры
         {
             if(!Char.IsDigit(e.Text, 0))
             {
